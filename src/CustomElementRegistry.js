@@ -71,7 +71,7 @@ export default class CustomElementRegistry {
    * @param {!Function} constructor
    */
   define(localName, constructor) {
-    if (!(constructor instanceof Function)) {
+    if (!(typeof constructor === "function")) {
       throw new TypeError('Custom element constructors must be functions.');
     }
 
@@ -96,7 +96,7 @@ export default class CustomElementRegistry {
     try {
       /** @type {!Object} */
       const prototype = constructor.prototype;
-      if (!(prototype instanceof Object)) {
+      if (!(typeof prototype === "object" && prototype !== null)) {
         throw new TypeError('The custom element constructor\'s prototype is not an object.');
       }
 
